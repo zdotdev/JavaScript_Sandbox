@@ -1,5 +1,5 @@
 window.onload = function(){
-    // Arithmetic Operator
+    // Arithmetic Operator:
     let a = 5;
     let b = 3;
 
@@ -17,7 +17,7 @@ window.onload = function(){
     let l = k;
     
 
-    // Comparison Operators
+    // Comparison Operators:
     // == equal to
     // === equal value and equal type
     // != not equal
@@ -26,7 +26,8 @@ window.onload = function(){
     // < less than
     // >= greater than or equal
     // <= less than or equal 
-    // ? ternary operator
+    // : = else operator
+    // ? ternary operator (then operator) Ex: const a = 1; const b = a < 2 ? 'red' : 'blue';
 
 
     document.getElementById('demo1').innerHTML = "Addition: " + c;
