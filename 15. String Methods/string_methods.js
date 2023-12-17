@@ -117,7 +117,41 @@ function padding(){
 
 // Extracting String Characters:
 
-// charAt()
+// charAt(position) this will get the specific hcaracter at specific index
+function charAt(){
+    let text = "HELLO WORLD";
+    let char = text.charAt(0);
+    
+    document.getElementById('demo12').innerHTML = "charAt: " + char;
+};
+
+// String charCodeAt(position) The charCodeAt() method returns the unicode of the character at a specified index in a string:
+//The method returns a UTF-16 code (an integer between 0 and 65535).
+function charCodeAt(){
+    let text = "HELLO WORLD";
+    let char = text.charCodeAt(0);
+
+    document.getElementById('demo13').innerHTML = "charCodeAt: " + char;
+};  
+
+// Property Access same as charAt but unpredicted and it throws error when the specific string value is not present
+function propertyAcccess(){
+    let text = "HELLO WORLD";
+    let char = text[0];
+
+    document.getElementById('demo14').innerHTML = "propertyAccess: " + char;
+};
+
+// Converting String to Array
+
+// String Split
+function stringSplit(){
+    let text = "HELLO WORLD";
+    text = text.split("");//will show the string of given index
+    // text2 = text.split(",");//will show the the text with index 0
+
+    document.getElementById('demo15').innerHTML = "stringSplit: " + text[1];
+};
 
 window.onload =
 stringLength()
@@ -129,4 +163,8 @@ replaceAll()
 toUpperAndLower()
 concat()
 trim()
-padding();
+padding()
+charAt()
+charCodeAt()
+propertyAcccess()
+stringSplit();
