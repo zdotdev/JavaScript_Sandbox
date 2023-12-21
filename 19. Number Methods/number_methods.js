@@ -56,7 +56,37 @@ function number(){
 function numberMethod(){
     let date = Number(new Date("2002-10-25"));
 
-    document.getElementById('demo7').innerHTML = "Number() Method: " + date;
+    // The method returns the number of milliseconds since 10.25.2002. Date()
+    document.getElementById('demo7').innerHTML = "Number() Method in Date: " + date;
+};
+
+// parseInt() parses a string and returns a whole number. Spaces are allowed. Only the first number is returned:
+function parseInt(){
+    let text = "10.25000";
+
+    document.getElementById('demo8').innerHTML = "parseInt: " + Number.parseInt(text);
+};
+
+// parseFloat parses a string and returns a number. Spaces are allowed. Only the first number is returned:
+function parseFloat(){
+    let text = "10.2500000";
+
+    document.getElementById('demo9').innerHTML = "parseFloat: " + Number.parseFloat(text);
+};
+
+// The method returns if the argument is an integer.Number.isInteger()true
+function isInteger(){
+    let number = 10;
+
+    document.getElementById('demo10').innerHTML = "isInteger: " + Number.isInteger(number);
+};
+
+// Number.isSafeInteger() Method A safe integer is an integer that can be exactly represented as a double precision number.
+function safeInteger(){
+ let number = 10;
+ 
+//  Safe integers are all integers from -(253 - 1) to +(253 - 1).
+ document.getElementById('demo11').innerHTML = "isSafeInteger: " + Number.isSafeInteger(number);
 };
 
 
@@ -68,4 +98,8 @@ toFixed()
 toPrecision()
 valueOf()
 number()
-numberMethod();
+numberMethod()
+parseInt()
+parseFloat()
+isInteger()
+safeInteger();
