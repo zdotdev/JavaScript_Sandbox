@@ -107,6 +107,7 @@ function lastArray(){
     document.getElementById('demo10').innerHTML = "last Array Element: " + fruit;
 };
 
+// forEach loop in Array
 function forEachArray(){
     const fruits = ["Banana", "Orange", "Apple", "Mango"];
 
@@ -118,8 +119,33 @@ function forEachArray(){
     text += "<li>" + value + "</li>";
     };
 
-    document.getElementById('demo11').innerHTML = text;
+    document.getElementById('demo11').innerHTML = "forEach Array: " + text;
 };
+
+// The easiest way to add a new element to an array is using the push() method:
+function pushArray(){
+    const fruits = ["Banana", "Orange", "Apple"];
+    fruits.push("Lemon");
+
+    document.getElementById('demo12').innerHTML = "push array: " + fruits;
+};
+
+// Add Array using length
+function addArrayUsingLength(){
+    const fruits = ["Banana", "Orange", "Apple"];
+    fruits[fruits.length] = "Lemon";
+
+    document.getElementById('demo13').innerHTML = "Add Array Using Length: " + fruits;
+};
+
+// How to Recognize an Array
+
+// Array.isArray()
+// Array.isArray(fruits);
+
+// instanceOf
+// const fruits = ["Banana", "Orange", "Apple"];
+// fruits instanceof Array;
 
 window.onload = 
 arrays()
@@ -132,4 +158,6 @@ fullArray()
 arrayAsObject()
 arrayLength()
 lastArray()
-forEachArray();
+forEachArray()
+pushArray()
+addArrayUsingLength();
