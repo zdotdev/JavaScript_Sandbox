@@ -3,7 +3,7 @@
 // Hexadecimal is base 16. Decimal is base 10. Octal is base 8. Binary is base 2.
 function toString(){
     let myNumber = 32;
-    let newNumber =  myNumber.toString(32);
+    let newNumber = myNumber.toString();
 
     document.getElementById('demo1').innerHTML = newNumber;
 };
