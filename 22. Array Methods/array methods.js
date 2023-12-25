@@ -65,11 +65,58 @@ function arrayJoin(){
     document.getElementById('demo7').innerHTML = "arrayJoin:" + array.join('*');
 };
 
-// Array delete()
+function arrayChangeElementsUsinglength(){
+    const array = ["Apple", "Banana", "Mango", "Strawberry"];
+
+    document.getElementById('demo8').innerHTML = "arrayChangeElementsUsinglength: " + (array[array.length] = "Kiwi");
+};
+
+// Array delete() Array elements can be deleted using the JavaScript operator delete. Using delete leaves undefined holes in the array. Use pop() or shift() instead.
+function arrayDelete(){
+    const array = ["Apple", "Banana", "Mango", "Strawberry"];
+    delete array[0];
+
+    document.getElementById('demo9').innerHTML = "arrayDelete: " + array;
+};
+
 // Array concat()
-// Array flat()
-// Array splice()
+function arrayConcat(){
+    const myGirls = ["Cecilie", "Lone"];
+    const myBoys = ["Emil", "Tobias", "Linus"];
+    const arr3 = ["Robin", "Morgan"];
+    
+    const myChildren = myGirls.concat(myBoys);
+    // const myChildren = arr1.concat(arr2, arr3); Concat 3 arrays
+    // const myChildren = arr1.concat("Peter"); concat with values
+
+    document.getElementById('demo10').innerHTML = "arrayConcat: " + myChildren;
+};
+
+// Array flat() Flattening an array is the process of reducing the dimensionality of an array. The flat() method creates a new array with sub-array elements concatenated to a specified depth.
+function arrayFlat(){
+    const myArr = [[1,2],[3,4],[5,6]];
+    const newArr = myArr.flat();
+
+    document.getElementById('demo11').innerHTML = "arrayFlat: " + newArr;
+}
+
+// Array splice() The splice() method can be used to add new items to an array:
+// The first parameter (2) defines the position where new elements should be added (spliced in).
+// The second parameter (0) defines how many elements should be removed.
+// The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.
+// The splice() method returns an array with the deleted items:
+
+function arraySplice(){
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.splice(2, 0, "Lemon", "Kiwi");
+
+    // fruits.splice(0, 1); to remove an element, you can put it on the parameter. First value is for the index, second is for the length of item(s) to be removed
+
+    document.getElementById('demo12').innerHTML = "arraySplice: " + fruits;
+};
+
 // Array slice()
+
 
 window.onload = 
 arrayLength()
@@ -78,4 +125,9 @@ arrayPop()
 arrayPush()
 arrayShift()
 arrayUnShift()
-arrayJoin();
+arrayJoin()
+arrayChangeElementsUsinglength()
+arrayDelete()
+arrayConcat()
+arrayFlat()
+arraySplice();
