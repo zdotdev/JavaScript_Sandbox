@@ -9,11 +9,11 @@ function arrayLength(){
 function arrayToString(){
     const array = ["Apple", "Banana", "Mango", "Strawberry"];
 
+    document.getElementById('demo2').innerHTML = "arrayToString: " + array.toString();
+
     //The join() method also joins all array elements into a string.
     //It behaves just like toString(), but in addition you can specify the separator:
-    // document.getElementById('demo2').innerHTML = "arrayToString: " + array.join("*");
-
-    document.getElementById('demo2').innerHTML = "arrayToString: " + array.toString();
+    document.getElementById('demo2.1').innerHTML = "arrayJoin: " + array.join("*");
 };
 
 // Array pop() remove the last array element
@@ -48,9 +48,23 @@ function arrayShift(){
 };
 
 // Array unshift() The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements:
+function arrayUnShift(){
+    const array = ["Apple", "Banana", "Mango", "Strawberry"];
+    array.unshift("Pomelo"); // Add in the parameter the element you want to add
 
+    // Returns the value that was shifted out
+    // document.getElementById('demo5').innerHTML = "arrayShift: " + array.shift();
 
-// Array join()
+    document.getElementById('demo6').innerHTML = "arrayunshift: " + array;
+};
+
+// Array join() specifies the separator
+function arrayJoin(){
+    const array = ["Apple", "Banana", "Mango", "Strawberry"];
+
+    document.getElementById('demo7').innerHTML = "arrayJoin:" + array.join('*');
+};
+
 // Array delete()
 // Array concat()
 // Array flat()
@@ -62,4 +76,6 @@ arrayLength()
 arrayToString()
 arrayPop()
 arrayPush()
-arrayShift();
+arrayShift()
+arrayUnShift()
+arrayJoin();
