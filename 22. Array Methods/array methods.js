@@ -115,8 +115,13 @@ function arraySplice(){
     document.getElementById('demo12').innerHTML = "arraySplice: " + fruits;
 };
 
-// Array slice()
+// Array slice() will return the array element starting from the index inside inside the parameter
+function arraySlice(){
+    const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+    // const newfruits = fruits.slice(1, 5); The first parameter is for the index where to start and the second is where to end. Note: the second parameter is base on position, not on index. 
 
+    document.getElementById('demo13').innerHTML = "arraySlice: " + fruits.slice(3);
+};
 
 window.onload = 
 arrayLength()
@@ -130,4 +135,5 @@ arrayChangeElementsUsinglength()
 arrayDelete()
 arrayConcat()
 arrayFlat()
-arraySplice();
+arraySplice()
+arraySlice();
