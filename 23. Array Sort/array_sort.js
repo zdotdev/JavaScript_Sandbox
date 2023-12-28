@@ -33,7 +33,31 @@ function numericalSort(){
 // The function calculates 40 - 100 (a - b), and since the result is negative (-60),  the sort function will sort 40 as a value lower than 100.
 // You can use this code snippet to experiment with numerically and alphabetically sorting:
 
+// random oreder sort
+function arrayRandom(){
+    const points = [40, 100, 1, 5, 25, 10];
+    points.sort(function(){return 0.5 - Math.random()}); // may parameter man o wala, ipapasa pa din yung value ng array papunta don sa math.random
+
+    document.getElementById('demo4').innerHTML = "randomSort: " + points;
+};
+
+// fisher yates sort
+function arraySortYates(){
+    const points = [40, 100, 1, 5, 25, 10];
+
+    for (let i = points.length -1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i+1));
+    let k = points[i];
+    points[i] = points[j];
+    points[j] = k;
+
+    document.getElementById('demo5').innerHTML = "Fisher Yates Sort: " + points;
+}
+}
+
 window.onload =
 arraySort()
 arrayReverse()
-numericalSort();
+numericalSort()
+arrayRandom()
+arraySortYates();
