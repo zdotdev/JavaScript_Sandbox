@@ -21,6 +21,7 @@ async function worldTimeApi(){
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
+    console.log(data.client_ip);
 };
 
 // constraints validation
@@ -104,12 +105,82 @@ function setItem(){
 
     submit.addEventListener('click', function(){
         localStorage.setItem('name', text.value);
+        text.value = "";
     });
 };
 
 // getItem
 function getItem(){
-    console.log(localStorage.getItem('name'));
+    document.getElementById('getItem-p').innerHTML = localStorage.getItem('name');
+};
+
+// creating object array and store it in localStorage
+function objectArrayLocalStorage(){
+    // Load existing array from localStorage
+    const existingArray = JSON.parse(localStorage.getItem('myArrayKey')) || [];
+
+    function displayItems(){
+        const itemList = document.getElementById('demo7-ul');
+        itemList.innerHTML = '';
+
+        // long version
+        existingArray.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item.name + item.id;
+            itemList.appendChild(listItem);
+        });
+
+        // short way by yours truely
+        // for(const i of existingArray){
+        //     itemList.innerHTML += `<li>${i.id} ${i.name}</li>`;
+        // };
+    };
+
+    displayItems();
+
+    function addItem(){
+        const nameInput = document.getElementById('demo7-input');
+        const itemList = nameInput.value.trim();
+
+        // check if the input is not empty
+        if(itemList !== ''){
+            // add new item to the array
+            existingArray.push({id: existingArray.length + 1,name: itemList});
+
+            // update localStorage
+            localStorage.setItem('myArraykey', JSON.stringify(existingArray));
+
+            // display localStorage array
+            displayItems();
+
+            // clear input value
+            nameInput.value = '';
+        };
+    };
+
+    document.getElementById('demo7-button').addEventListener('click', function(){
+        addItem();
+    });
+
+    console.log(existingArray);
+
+};
+
+// The sessionStorage Object
+// The sessionStorage object is identical to the localStorage object.
+
+// The difference is that the sessionStorage object stores data for one session.
+
+// The data is deleted when the browser is closed.
+
+function removeItem(){
+    const input = document.getElementById('demo8-input');
+    const button = document.getElementById('demo8-button');
+
+    button.addEventListener('click', function(){
+        console.log('clicked');
+        localStorage.removeItem('myArraykey', input);
+    });
 };
 
 window.onload = 
@@ -120,4 +191,6 @@ rangeOverflow()
 historyBack()
 historyGo()
 setItem()
-getItem();
+getItem()
+objectArrayLocalStorage()
+removeItem();
