@@ -200,3 +200,10 @@ getItem()
 objectArrayLocalStorage()
 removeItem()
 // clearLocalStorage();
+
+// note:
+// in setting object array using local json for localStorage, you have to stringify the object array first:
+// const object = [{id: 1, name: 'Zed}];
+// JSON.stringify(localStorage.setItem('myArray', object));
+// const arrayItems = JSON.parse(localStorage.getItem('myArray')) || [];
+// console.log(arrayItems);
