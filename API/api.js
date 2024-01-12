@@ -116,54 +116,49 @@ function getItem(){
 
 // creating object array and store it in localStorage
 function objectArrayLocalStorage(){
+
+    // const array = JSON.stringify([{}]);
+    // localStorage.setItem('myArrayKey', array);
+    
     // Load existing array from localStorage
     const existingArray = JSON.parse(localStorage.getItem('myArrayKey')) || [];
 
-    function displayItems(){
-        const itemList = document.getElementById('demo7-ul');
-        itemList.innerHTML = '';
-
-        // long version
-        existingArray.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.textContent = item.name + item.id;
-            itemList.appendChild(listItem);
-        });
-
-        // short way by yours truely
-        // for(const i of existingArray){
-        //     itemList.innerHTML += `<li>${i.id} ${i.name}</li>`;
-        // };
-    };
-
+    // Display existing items
     displayItems();
 
-    function addItem(){
-        const nameInput = document.getElementById('demo7-input');
-        const itemList = nameInput.value.trim();
-
-        // check if the input is not empty
-        if(itemList !== ''){
-            // add new item to the array
-            existingArray.push({id: existingArray.length + 1,name: itemList});
-
-            // update localStorage
-            localStorage.setItem('myArraykey', JSON.stringify(existingArray));
-
-            // display localStorage array
-            displayItems();
-
-            // clear input value
-            nameInput.value = '';
-        };
+    function displayItems() {
+        const itemList = document.getElementById('demo7-ul');
+        itemList.innerHTML = '';
+        
+        existingArray.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item.id + " " + item.name;
+            itemList.appendChild(listItem);
+        });
     };
 
-    document.getElementById('demo7-button').addEventListener('click', function(){
-        addItem();
-    });
+    const button = document.getElementById('demo7-button');
 
-    console.log(existingArray);
+    button.onclick = function () {
+        // Get the item name from the input
+        const itemNameInput = document.getElementById('demo7-input');
+        const itemName = itemNameInput.value.trim();
 
+        // Check if the input is not empty
+        if (itemName !== '') {
+            // Add a new item to the array
+            existingArray.push({ id: existingArray.length + 1, name: itemName });
+
+            // Update localStorage with the modified array
+            localStorage.setItem('myArrayKey', JSON.stringify(existingArray));
+
+            // Display the updated items
+            displayItems();
+
+            // Clear the input for the next item
+            itemNameInput.value = '';
+        };
+    };
 };
 
 // The sessionStorage Object
@@ -176,11 +171,21 @@ function objectArrayLocalStorage(){
 function removeItem(){
     const input = document.getElementById('demo8-input');
     const button = document.getElementById('demo8-button');
+    const existingArray = JSON.parse(localStorage.getItem('myArrayKey')) || [];
+    
+    button.onclick = function(){
+        
+        const itemTrue = existingArray[input.value - 1];
+        console.log(itemTrue);
+        existingArray.splice(itemTrue, 1);
 
-    button.addEventListener('click', function(){
-        console.log('clicked');
-        localStorage.removeItem('myArraykey', input);
-    });
+        localStorage.setItem('myArrayKey', JSON.stringify(existingArray));
+        console.log(existingArray);
+    };
+};
+
+function clearLocalStorage(){
+    localStorage.clear();
 };
 
 window.onload = 
@@ -193,4 +198,5 @@ historyGo()
 setItem()
 getItem()
 objectArrayLocalStorage()
-removeItem();
+removeItem()
+// clearLocalStorage();
