@@ -53,6 +53,7 @@ function removeItemUsingNumber() {
     let items = JSON.parse(localStorage.getItem('myArray')) || [];
 
     buttonSelect.onclick = function () {
+        // find specific number inside the parsed items
         const findId = items.findIndex(element => element.number == inputSelect.value);
         console.log(findId)
 
@@ -63,7 +64,6 @@ function removeItemUsingNumber() {
             // Update localStorage with the modified array
             localStorage.setItem('myArray', JSON.stringify(items));
 
-            console.log(items);
         } else {
             console.log('Cannot find the id');
         }
