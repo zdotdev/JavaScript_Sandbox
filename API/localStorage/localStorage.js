@@ -46,22 +46,29 @@ function addObjectArray(){
     };
 };
 
-function removeItemUsingNumber(){
+function removeItemUsingNumber() {
     const inputSelect = document.getElementById('select-number');
     const buttonSelect = document.getElementById('select-number-button');
 
-    const items = JSON.parse(localStorage.getItem('myArray')) || [];
+    let items = JSON.parse(localStorage.getItem('myArray')) || [];
 
-    // console.log(items[1].number)
+    buttonSelect.onclick = function () {
+        const findId = items.findIndex(element => element.number == inputSelect.value);
+        console.log(findId)
 
-    for(let i; i <= items.length; i++){
-        const findId = items.findIndex(item => items[i].number === 16);
-        console.log(findId);
-    }
+        if (findId !== -1) {
+            // If the item is found, remove it from the array
+            items.splice(findId, 1);
 
-    
-};
+            // Update localStorage with the modified array
+            localStorage.setItem('myArray', JSON.stringify(items));
 
+            console.log(items);
+        } else {
+            console.log('Cannot find the id');
+        }
+    };
+}
 
 document.getElementById('clear').addEventListener('click', function(){
     localStorage.clear();
