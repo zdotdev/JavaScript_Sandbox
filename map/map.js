@@ -35,5 +35,37 @@ function index(){
     document.getElementById('demo2').innerHTML = "Map using index: " + indexed;
 }
 
+// map array()
+function array(){
+    const numbers = [1, 2, 3];
+
+    // this code will return the the mapped value of added element and array.reduce. array.reduce sum is [1 + 2 + 3] = 6. The calculation is element value 1 + 6 = [7,...] and so on
+    const summedArray = numbers.map(function(element, index, array) {
+    const sum = element + array.reduce((acc, curr) => acc + curr, 0);
+    return sum;
+    });
+
+    document.getElementById('demo3').innerHTML = "Map using array: " + (summedArray);
+    // Output: [7, 8, 9]
+};
+
+// map this()
+function thisValue(){
+    const numbers = [1, 2, 3];
+    const multiplier = 2;
+
+    const multipliedNumbers = numbers.map(
+    function(element) {
+        return element * this.multiplier;
+    },
+    { multiplier }
+    );
+
+    document.getElementById('demo4').innerHTML = "Map using this: " + multipliedNumbers;
+    // Output: [2, 4, 6]
+};
+
 parameter();
 index();
+array();
+thisValue();
