@@ -3,18 +3,18 @@ window.onload = function(){
     let a = 5;
     let b = 3;
 
-    let c = a + b;
-    let d = a - b;
-    let e = a * b;
-    let f = a ** b;
-    let g = a / b;
-    let h = a % b;
-    let i = 1;
-    i++;
+    let c = a + b; // Addition
+    let d = a - b; // Subtraction 
+    let e = a * b; // Multiplication
+    let f = a ** b; // Exponent
+    let g = a / b; //Division
+    let h = a % b; // Modulo
+    let i = 1; 
+    i++; // Increment
     let j = i;
     let k = 1;
-    k--;
-    let l = k;
+    k--; // decrement
+    let l = k; 
     
 
     // Comparison Operators:

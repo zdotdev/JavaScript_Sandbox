@@ -38,7 +38,7 @@ function destructuringFucntion(){
         const multiply = a * b;
         const divide = a / b;
         const modulo = a % b;
-        const exponent = a.toExponential(b);
+        const exponent = a ** b;
 
         return [add, subtract, multiply, divide, modulo, exponent];
     };
@@ -48,3 +48,39 @@ function destructuringFucntion(){
     console.log(add);
 };
 destructuringFucntion();
+
+// global object inside a function
+function destructuringGlobalObject(){
+    const car = {
+        brand: "Ford",
+        model: "Mustang",
+        color: "Gun Metal",
+        year: 2024
+    };
+
+    function myVehicle({brand, model, color, year}){
+        console.log(brand);
+    }
+    myVehicle(car);
+}
+destructuringGlobalObject();
+
+// destructuring nested object
+function nestedObject(){
+    const car = {
+        brand: "Ford",
+        model: "Mustang",
+        color: "Gun Metal",
+        year: 2024,
+        regitration: {
+            country: "Philippines",
+            plate: "SCKN TRD"
+        }
+    };
+
+    function myVehicle({brand, regitration: {plate}}){
+        console.log(brand + " " + plate);
+    }
+    myVehicle(car);
+};
+nestedObject();
