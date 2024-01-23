@@ -89,6 +89,11 @@ function safeInteger(){
  document.getElementById('demo11').innerHTML = "isSafeInteger: " + Number.isSafeInteger(number);
 };
 
+function mathPow(){
+    const num = 3;
+    const expo1 = Math.pow(num, 3);
+    console.log(expo1);
+}
 
 
 window.onload =
@@ -103,3 +108,4 @@ parseInt()
 parseFloat()
 isInteger()
 safeInteger();
+mathPow();
