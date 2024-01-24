@@ -53,20 +53,21 @@ function sequentialPromise(){
                 break;
                 case 'Rainy':
                 resolve('⛈️')
+                break;
                 default:
                     reject('No Icon')
             }
         });
     }
-    function success(success){
-        console.log(success);
+    function onSuccess(success){  // The output of the switch of getWetherIcon() will be passed to the parameter of this function
+        console.log(`Success: ${success}`);
     }
-    function fail(fail){
-        console.log(fail);
+    function onFail(fail){
+        console.log(`Fail: ${fail}`);
     }
 
     getWeather()
     .then(getWeatherIcon) // The value for the parameter will be automatically pass.
-    .then(success, fail)
+    .then(onSuccess, onFail)
 };
 sequentialPromise();
