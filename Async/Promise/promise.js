@@ -201,14 +201,14 @@ function promiseWithAPI(){
         return new Promise((resolve, reject) => {
             fetch("http://worldtimeapi.org/api/timezone/Asia/Manila")
             .then(Time => Time.json())
-            .then(data => resolve(data.day_of_year))
+            .then(data => resolve(data.timezone)) // Ganto ko nakita yung laman nya na walang JSON.stringify() => (console.log(data)))
             .catch(error => reject(error))
         })
     }
 
 
     function success(data){
-        console.log(`Day today is: ${data}`);
+        console.log(`Timezone is: ${data}`);
     }
 
     function error(data){
@@ -219,7 +219,7 @@ function promiseWithAPI(){
     .then(success)
     .catch(error)
 };
-// promiseWithAPI();
+promiseWithAPI();
 
 // try catch error in promise
 function tryCatchPromise(){
@@ -228,8 +228,8 @@ function tryCatchPromise(){
             try{
                 fetch("http://worldtimeapi.org/api/timezone/Asia/Manila")
                 .then(time => time.json())
-                .then(data => resolve(data))
-                .catch(error => reject(`Server error: ${error}`))
+                .then(data => resolve((JSON.stringify(data.timezone)))) // Remove JSON.stringfy to remove "" => Always use stringify so that the resolve wont return [Object Object]
+                .catch(error => reject(`Server error: ${error.error.message}`))
             }catch(error){
                 reject(`Fetch error: ${error}`)
             }
@@ -237,11 +237,11 @@ function tryCatchPromise(){
     };
 
     function success(data){
-        console.log(`Success: ${data}`)
+        console.log(`Success: ${data} Timezone`)
     };
 
     function error(error){
-        console.log(`Success: ${error}`)
+        console.log(`ERROR: ${error}`)
     };
 
     getTime()
