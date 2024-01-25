@@ -71,3 +71,47 @@ function sequentialPromise(){
     .then(onSuccess, onFail)
 };
 sequentialPromise();
+
+function sequentialPromiseV2(){
+    function getLocationName() {
+        // Async operation to get locationName
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("City");
+            }, 3000)
+             
+        })
+    }
+    
+    function getLocationLatLon() {
+        // Async operation to get latlon
+        return new Promise((resolve, reject) => {
+            resolve({ lat: 12.34, lon: 56.78 });
+        })
+    }
+    
+    function getWeather() {
+        // Async operation to get weatherData
+        return new Promise((resolve, reject) => {
+            resolve("Sunny")
+        })
+    }
+    
+    function getWeatherIcon() {
+        // Async operation to get weatherIcon
+        return new Promise((resolve, reject) => {
+            resolve("☀️")
+        })
+    }
+    
+    function displayWeatherIcon(weatherIcon) {
+        console.log(`Displaying weather icon: ${weatherIcon}`);
+    }
+    
+    getLocationName()
+    .then(getLocationLatLon)
+    .then(getWeather)
+    .then(getWeatherIcon)
+    .then(displayWeatherIcon)
+};
+sequentialPromiseV2();

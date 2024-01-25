@@ -43,4 +43,48 @@ function eventListener(){
     };
     document.getElementById('button').addEventListener('click', increment);
 };
-eventListener();
+// eventListener();
+
+// example of callback hell
+function callbackHell(){
+    function getLocationName(callback) {
+        // Async operation to get locationName
+        const locationName = "City";
+        callback(locationName);
+    }
+    
+    function getLocationLatLon(locationName, callback) {
+        // Async operation to get latlon
+        const latlon = { lat: 12.34, lon: 56.78 };
+        callback(latlon);
+    }
+    
+    function getWeather(latlon, callback) {
+        // Async operation to get weatherData
+        const weatherData = "Sunny";
+        callback(weatherData);
+    }
+    
+    function getWeatherIcon(weatherData, callback) {
+        // Async operation to get weatherIcon
+        const weatherIcon = "☀️";
+        callback(weatherIcon);
+    }
+    
+    function displayWeatherIcon(weatherIcon) {
+        console.log(`Displaying weather icon: ${weatherIcon}`);
+    }
+    
+    // Usage
+    getLocationName((locationName) => {
+        getLocationLatLon(locationName, (latlon) => {
+            getWeather(latlon, (weatherData) => {
+                getWeatherIcon(weatherData, (weatherIcon) => {
+                    displayWeatherIcon(weatherIcon);
+                });
+            });
+        });
+    });
+    
+}
+callbackHell();
