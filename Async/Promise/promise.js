@@ -115,3 +115,138 @@ function sequentialPromiseV2(){
     .then(displayWeatherIcon)
 };
 sequentialPromiseV2();
+
+// catching error
+function catchError(){
+    function getWeather(){
+        return new Promise((resolve, reject) => {
+            setTimeout(() =>{
+                reject('No data found.');
+            }, 3000); // setTimeout para kunwari mabagal internet or my delay kagaya sa real world
+        });
+    };
+    function getWeatherIcon(weather){
+        return new Promise((resolve, reject) => {
+            switch(weather){
+                case 'Sunny':
+                    resolve('☀️');
+                    break;
+                case 'Rainy':
+                    resolve('⛈️')
+                    break;
+                case 'Cloudy':
+                    resolve('☁️');
+                default:
+                    reject('No icon found.'); 
+            };
+        });
+    };
+    function success(data){
+        console.log(`Success: ${data}`)
+    };
+    function error(error){
+        console.log(`Error: ${error}`)
+    };
+
+    getWeather()
+    .then(getWeatherIcon)
+    .then(success)
+    .catch(error) // to catch the error
+};
+catchError();
+
+// finally. Finally will run either the respoonse is resolve or reject
+function promiseFinally(){
+    function getWeather(){
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('Sunny');
+            }, 3000);
+        });
+    };
+    function getWeatherIcon(weather){
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                switch(weather){
+                    case 'Sunny':
+                        resolve('☀️')
+                    default:
+                        reject('No icon.')
+                }
+            }, 3000);
+        });
+    };
+    function success(data){
+        console.log(`Success: ${data}`)
+    };
+    function error(data){
+        console.log(`Error: ${data}`)
+    };
+    function finallyFunction(){
+        console.log('End of code')
+    };
+    getWeather()
+    .then(getWeatherIcon)
+    .then(success)
+    .catch(error)
+    .finally(finallyFunction)
+};
+promiseFinally();
+
+
+// api using promise
+
+function promiseWithAPI(){
+    function getWorldTime(){
+        return new Promise((resolve, reject) => {
+            fetch("http://worldtimeapi.org/api/timezone/Asia/Manila")
+            .then(Time => Time.json())
+            .then(data => resolve(data.day_of_year))
+            .catch(error => reject(error))
+        })
+    }
+
+
+    function success(data){
+        console.log(`Day today is: ${data}`);
+    }
+
+    function error(data){
+        console.log(`ERROR: ${data}`)
+    };
+
+    getWorldTime()
+    .then(success)
+    .catch(error)
+};
+// promiseWithAPI();
+
+// try catch error in promise
+function tryCatchPromise(){
+    function getTime(){
+        return new Promise((resolve, reject) => {
+            try{
+                fetch("http://worldtimeapi.org/api/timezone/Asia/Manila")
+                .then(time => time.json())
+                .then(data => resolve(data))
+                .catch(error => reject(`Server error: ${error}`))
+            }catch(error){
+                reject(`Fetch error: ${error}`)
+            }
+        });
+    };
+
+    function success(data){
+        console.log(`Success: ${data}`)
+    };
+
+    function error(error){
+        console.log(`Success: ${error}`)
+    };
+
+    getTime()
+    .then(success)
+    .catch(error)
+
+};
+tryCatchPromise();
