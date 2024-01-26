@@ -18,7 +18,7 @@ function basicAsyncAwait(){
     };
     data();
 };
-// basicAsyncAwait();
+basicAsyncAwait();
 
 // much cleaner than the code above. Async await is automatic promise
 function basicAsyncAwait2(){
@@ -30,3 +30,74 @@ function basicAsyncAwait2(){
     getData();
 };
 basicAsyncAwait2();
+
+// async await error handling
+function errorHandling(){
+    async function getData(){
+        try {
+            const data = await fetch(url);
+            const time = await data.json();
+            console.log(time);
+        } catch (error) {
+            console.log(error)
+        };
+    };
+    getData();
+}; 
+errorHandling();
+
+function errorHandlingPromise(){
+    function getData(){
+        return new Promise((resolve, reject) => {
+            fetch(url)
+            .then(data => resolve(data.json()))
+            // .then(time => resolve(JSON.stringify(time))) this is optional. use this if you wanna stringify the data
+            .catch(error => reject(error))
+
+        });
+    };
+
+    async function displayData(){
+        try {
+            const data = await getData();
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    displayData();
+};
+errorHandlingPromise();
+
+function myFunction(){
+    function getData(){
+        return new Promise((resolve, reject) => {
+            fetch(url)
+            .then(data => resolve(data.json()))
+            .catch(error => reject(error));
+        });
+    }
+
+    function onSuccess(data){
+        console.log(data);
+    };
+    function onError(error){
+        console.log(error);
+    };
+
+    function dataIsReceived(){
+        console.log('Data is received!');
+    }
+
+    async function dataReceived(){
+        try {
+            const time = await getData();
+            onSuccess(time);
+            dataIsReceived();
+        } catch (error) {
+            onError(error);
+        };
+    };
+    dataReceived();
+};
+myFunction();
