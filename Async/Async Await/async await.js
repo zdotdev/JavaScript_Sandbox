@@ -20,7 +20,7 @@ function basicAsyncAwait(){
 };
 // basicAsyncAwait();
 
-// much cleaner than the code above
+// much cleaner than the code above. Async await is automatic promise
 function basicAsyncAwait2(){
     async function getData(){
         const data = await fetch(url);
