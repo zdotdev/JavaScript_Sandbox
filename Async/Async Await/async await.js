@@ -20,6 +20,7 @@ function basicAsyncAwait(){
 };
 // basicAsyncAwait();
 
+// much cleaner than the code above
 function basicAsyncAwait2(){
     async function getData(){
         const data = await fetch(url);
