@@ -20,6 +20,7 @@ window.onload = function(){
     // Comparison Operators:
     // == equal to
     // === equal value and equal type
+    // object.is() return true or false of the two value inside the parameter
     // != not equal
     // !== not equal value and not equal type
     // > greater than
